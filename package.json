@@ -1,0 +1,48 @@
+{
+    "name": "mean-edge",
+    "description": "Cutting Edge Website + Data API",
+    "version": "2.0.0",
+    "private": true,
+    "author": "Digital Institute",
+    "contributors": [
+        "Derek Mortimer <derek.mortimer@ncl.ac.uk>",
+        "Mark Turner <mark.turner@ncl.ac.uk>"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "ssh://git@bitbucket.org/drpyo/mean-edge.git"
+    },
+    "engines": {
+        "node": "0.10.x",
+        "npm": "1.3.x"
+    },
+    "scripts": {
+        "start": "node node_modules/grunt-cli/bin/grunt",
+        "postinstall": "node node_modules/bower/bin/bower install"
+    },
+    "dependencies": {
+        "express": "3.4.x",
+        "jade": "1.0.x",
+        "mongoose": "3.8.x",
+        "connect-mongo": "0.4.x",
+        "connect-flash": "0.1.x",
+        "crypto": "0.0.3",
+        "passport": "0.1.x",
+        "passport-local": "0.1.x",
+        "lodash": "2.4.x",
+        "view-helpers": "0.1.x",
+        "mean-logger": "0.0.1",
+        "bower": "1.2.x",
+        "grunt": "0.4.x",
+        "grunt-cli": "0.1.x",
+        "grunt-env": "0.4.x",
+        "forever": "0.10.x",
+        "should": "2.1.1",
+        "grunt-concurrent": "0.4.x",
+        "supertest": "0.8.2",
+        "grunt-contrib-jshint": "0.8.x",
+        "grunt-nodemon": "0.1.2",
+        "grunt-contrib-watch": "0.5.x",
+        "validator": "3.2.x"
+    }
+}

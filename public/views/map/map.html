@@ -1,0 +1,90 @@
+<section data-ng-controller="MapController" data-ng-init="artefact()">
+    <div class="google-map"
+         center="map.center"
+         zoom="map.zoom"
+         draggable="true"
+         dragging="map.dragging"
+         bounds="map.bounds"
+         events="map.events"
+         refresh="map.refresh"
+         options="map.options">
+
+        <marker coords="artefactLocationMarker.coords" options="artefactLocationMarker.options" events="artefactLocationMarker.events" />
+
+        <markers models="map.artefactMarkers" coords="'self'" icon="'icon'" click="'onClicked'" doCluster="map.clusterArtefact" clusterOptions="map.clusterArtefactOptions">
+            <windows show="'showWindow'" closeClick="'closeClick'">
+                <div class="artefact-info">
+                    <img ng-non-bindable src="{{content.thumbnail}}" alt="{{content.simpleName}}" />
+                    <h4 ng-non-bindable>{{content.simpleName}}</h4>
+                    <h6 ng-non-bindable>{{content.findLocation.title}}</h6>
+                    <p ng-non-bindable>{{content.description}}</p>
+                    <a class="btn btn-default pull-right" href="/#!/artefact/{{content.id}}/">View Artefact</a>
+                </div>
+            </windows>
+        </markers>
+        <markers models="map.megalithicMarkers" coords="'self'" icon="'icon'" click="'onClicked'" doCluster="map.clusterMegalithic" clusterOptions="map.clusterMegalithicOptions">
+            <windows show="'showWindow'" closeClick="'closeClick'">
+                <div class="megalithic-info">
+                    <h4 ng-non-bindable>{{content.name}}</h4>
+                    <h6 ng-non-bindable>{{content.region}}</h6>
+                    <small ng-show="{{content.alternativeNames}}">{{content.alternativeNames}}</small>
+                    <dl class="dl-horizontal">
+                        <dt>Type</dt>
+                        <dd ng-non-bindable>{{content.type}}</dd>
+                        <dt>Condition</dt>
+                        <dd ng-non-bindable>{{content.condition}}</dd>
+                        <dt>Access</dt>
+                        <dd ng-non-bindable>{{content.access}}</dd>
+                        <dt>Ambience</dt>
+                        <dd ng-non-bindable>{{content.ambience}}</dd>
+                    </dl>
+                </div>
+            </windows>
+        </markers>
+        <markers models="map.domesdayMarkers" coords="'self'" icon="'icon'" click="'onClicked'" doCluster="map.clusterDomesday" clusterOptions="map.clusterDomesdayOptions">
+            <windows show="'showWindow'" closeClick="'closeClick'">
+                <div class="domesday-info">
+                    <h4 ng-non-bindable>{{content.vill}}</h4>
+                </div>
+            </windows>
+        </markers>
+    </div>
+    <div class="map-settings">
+        <a class="btn btn-default btn-sm" href="/#!/artefact/{{artefact.id}}">Back</a>
+        <h4>Datasets</h4>
+        <label>
+            <input type="checkbox" data-ng-model="searchOptions.data.museums" id="dataset-museums" value="museums" name="museums">
+            <div class="checkbox dataset opt-museums"></div>
+        </label>
+        <label>
+            <input type="checkbox" data-ng-model="searchOptions.data.megalithic" id="dataset-megalithic" value="megalithic" name="megalithic">
+            <div class="checkbox dataset opt-megalithic"></div>
+        </label>
+        <label>
+            <input type="checkbox" data-ng-model="searchOptions.data.domesday" id="dataset-domesday" value="domesday" name="domesday">
+            <div class="checkbox dataset opt-domesday"></div>
+        </label>
+        <!--<h4>Map Type</h4>
+        <label>
+            <input type="radio" data-ng-model="searchOptions.mapType" value="terrain" name="mapType">
+            <div class="checkbox opt-terrain"></div>
+        </label>
+        <label>
+            <input type="radio" data-ng-model="searchOptions.mapType" value="satellite" name="mapType">
+            <div class="checkbox opt-satellite"></div>
+        </label>
+        <label>
+            <input type="radio" data-ng-model="searchOptions.mapType" value="road" name="mapType">
+            <div class="checkbox opt-road"></div>
+        </label>-->
+        <h4>Search Radius</h4>
+        <p>{{searchOptions.radius}} km</p>
+        <slider floor="0" ceiling="100" step="5" precision="0" ng-model="searchOptions.radius"></slider>
+        <button class="btn btn-success pull-right" data-ng-click="search()">Search</button>
+    </div>
+    <style>
+
+        footer, .push{display:none;}
+
+    </style>
+</section>
