@@ -1,6 +1,11 @@
-.DS_Store
-.nodemonignore
-.sass-cache/
-node_modules/
-public/lib
-test/coverage/
+node_modules
+public
+.tmp
+.sass-cache
+.idea
+client/bower_components
+client/index.html
+dist
+/server/config/local.env.js
+npm-debug.log
+coverage
