@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  ce_db:
+    image: mongo:3
+  nicd_redis:
+    build: redis
+    image: nicd/redis:latest
+    ports:
+      - "6379"
+  ce_app:
+    build: .
+    image: ce/app:latest
+    depends_on:
+      - ce_db
+    links:
+      - ce_db:ce_db
+    ports:
+      - "5000:5000"

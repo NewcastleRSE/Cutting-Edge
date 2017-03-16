@@ -1,14 +1,14 @@
 /**
- * Thing model events
+ * Location model events
  */
 
 'use strict';
 
 import {EventEmitter} from 'events';
-var ThingEvents = new EventEmitter();
+var LocationEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)
-ThingEvents.setMaxListeners(0);
+LocationEvents.setMaxListeners(0);
 
 // Model events
 var events = {
@@ -17,19 +17,19 @@ var events = {
 };
 
 // Register the event emitter to the model events
-function registerEvents(Thing) {
+function registerEvents(Location) {
   for(var e in events) {
     let event = events[e];
-    Thing.post(e, emitEvent(event));
+    Location.post(e, emitEvent(event));
   }
 }
 
 function emitEvent(event) {
   return function(doc) {
-    ThingEvents.emit(`${event}:${doc._id}`, doc);
-    ThingEvents.emit(event, doc);
+    LocationEvents.emit(event + ':' + doc._id, doc);
+    LocationEvents.emit(event, doc);
   };
 }
 
 export {registerEvents};
-export default ThingEvents;
+export default LocationEvents;
