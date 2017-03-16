@@ -1,16 +1,16 @@
 'use strict';
 
-import main from './main.component';
+import timeline from './timeline.component';
 import {
-  MainController
-} from './main.component';
+  TimelineController
+} from './timeline.component';
 
-describe('Component: MainComponent', function() {
-  beforeEach(angular.mock.module(main));
+describe('Component: TimelineComponent', function() {
+  beforeEach(angular.mock.module(timeline));
   beforeEach(angular.mock.module('stateMock'));
 
   var scope;
-  var mainComponent;
+  var timelineComponent;
   var state;
   var $httpBackend;
 
@@ -22,15 +22,15 @@ describe('Component: MainComponent', function() {
 
     scope = $rootScope.$new();
     state = $state;
-    mainComponent = $componentController('main', {
+    timelineComponent = $componentController('timeline', {
       $http,
       $scope: scope
     });
   }));
 
   it('should attach a list of things to the controller', function() {
-    mainComponent.$onInit();
+    timelineComponent.$onInit();
     $httpBackend.flush();
-    mainComponent.awesomeThings.length.should.equal(4);
+    timelineComponent.awesomeThings.length.should.equal(4);
   });
 });
