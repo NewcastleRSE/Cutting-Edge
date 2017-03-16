@@ -18,7 +18,7 @@ import {
 import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
 import artefact from './artefact/artefact.component';
-import casestudies from './case_studies/casestudies.component';
+import casestudies from './casestudies/casestudies.component';
 import search from './search/search.component';
 import home from './home/home.component';
 import timeline from './timeline/timeline.component';

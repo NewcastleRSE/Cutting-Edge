@@ -134,7 +134,7 @@ export function index(req, res) {
     if(req.query.count) {
         if(validator.isInt(req.query.count)) {
             // no more than 1000 at a time
-            limit = req.query.count >= 1000 ? 1000 : req.query.count;
+            limit = parseInt(req.query.count) >= 1000 ? 1000 : parseInt(req.query.count);
         }
     }
 

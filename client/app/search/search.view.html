@@ -1,12 +1,12 @@
 <section>
     <div class="row">
         <section class="col-md-4 col-md-offset-4 search-form">
-            <form class="form-horizontal" role="form" data-ng-submit="search()">
+            <form class="form-horizontal" role="form" data-ng-submit="$ctrl.search()">
                 <div class="input-group">
                     <!--<span class="input-group-btn">
                         <button class="btn btn-default btn-lg" data-toggle="modal" data-target="#search-help"><span class="glyphicon glyphicon-question-sign"></span></button>
                     </span>-->
-                    <input type="text" class="form-control input-lg" placeholder="Search" data-ng-model="search.keyword">
+                    <input type="text" class="form-control input-lg" placeholder="Search" data-ng-model="$ctrl.keyword">
                     <span class="input-group-btn">
                         <button class="btn btn-default btn-lg" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                     </span>
@@ -35,7 +35,7 @@
                 <li>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="hasDescription" data-ng-model="global.hasDescription">
+                            <input type="checkbox" value="hasDescription" data-ng-model="$ctrl.hasDescription">
                             Must Have Description
                         </label>
                     </div>
@@ -43,7 +43,7 @@
                 <li>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="hasReference" data-ng-model="global.hasReference">
+                            <input type="checkbox" value="hasReference" data-ng-model="$ctrl.hasReferences">
                             Must Have References
                         </label>
                     </div>
@@ -57,7 +57,7 @@
         </section>
         <section class="col-md-6 search-results">
             <div class="artefact-list">
-                <div class="artefact-thumbnail clearfix" data-ng-repeat="artefact in artefacts">
+                <div class="artefact-thumbnail clearfix" data-ng-repeat="artefact in $ctrl.artefacts">
                     <a href="/#!/artefact/{{artefact.id}}">
                         <img data-ng-show="artefact.thumbnail" src="{{artefact.thumbnail}}" alt="{{artefact.simpleName}}">
                         <div data-ng-hide="artefact.thumbnail" class="no-image">No Image</div>
@@ -66,7 +66,7 @@
                     </a>
                 </div>
             </div>
-            <div data-ng-click="nextPage()" class="fetch-more btn btn-default">Load More Results</div>
+            <div data-ng-click="$ctrl.nextPage()" class="fetch-more btn btn-default">Load More Results</div>
             <h1 data-ng-hide="!artefacts || artefacts.length">No artefacts yet.</h1>
         </section>
     </div>
