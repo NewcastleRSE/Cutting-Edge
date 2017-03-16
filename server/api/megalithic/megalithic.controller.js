@@ -65,7 +65,45 @@ function handleError(res, statusCode) {
 
 // Gets a list of Megalithics
 export function index(req, res) {
-  return Megalithic.find().exec()
+
+    var query = {};
+
+    // location based query
+    if (req.query.longitude && req.query.latitude && req.query.radius)
+    {
+        if (validator.isFloat(req.query.longitude) && validator.isFloat(req.query.latitude) && validator.isInt(req.query.radius)) {
+            query.location =  {
+                $near : {
+                    $geometry : {
+                        type : 'Point',
+                        coordinates : [ req.query.longitude, req.query.latitude ]
+                    }
+                },
+                $maxDistance : req.query.radius
+            };
+        }
+    }
+
+    // return 100 by default
+    var limit = 100;
+
+    if (req.query.count) {
+        if (validator.isInt(req.query.count)) {
+            // no more than 1000 at a time
+            limit = req.query.count >= 1000 ? 1000 : req.query.count;
+        }
+    }
+
+    // start on first page by default
+    var skip = 0;
+
+    if (req.query.page) {
+        if (validator.isInt(req.query.page) && req.query.page > 1) {
+            skip = (req.query.page - 1) * limit;
+        }
+    }
+
+  return Megalithic.find(query).sort('id').limit(limit).skip(skip).exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
