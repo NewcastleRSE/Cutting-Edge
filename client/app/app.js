@@ -12,7 +12,7 @@ import uiBootstrap from 'angular-ui-bootstrap';
 
 
 import {
-  routeConfig
+    routeConfig
 } from './app.config';
 
 import navbar from '../components/navbar/navbar.component';
@@ -24,13 +24,13 @@ import util from '../components/util/util.module';
 import './app.scss';
 
 angular.module('cuttingEdgeDockerApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBootstrap,
-  navbar, footer, main, constants, util
+    navbar, footer, main, constants, util
 ])
-  .config(routeConfig);
+    .config(routeConfig);
 
 angular.element(document)
-  .ready(() => {
-    angular.bootstrap(document, ['cuttingEdgeDockerApp'], {
-      strictDi: true
+    .ready(() => {
+        angular.bootstrap(document, ['cuttingEdgeDockerApp'], {
+            strictDi: true
+        });
     });
-  });
