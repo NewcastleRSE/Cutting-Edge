@@ -163,6 +163,14 @@ export function show(req, res) {
         .catch(handleError(res));
 }
 
+// Gets a random Artefact from the DB
+export function random(req, res) {
+    return Artefact.aggregate([{$sample: {size: 1}}]).exec()
+        .then(handleEntityNotFound(res))
+        .then(respondWithResult(res))
+        .catch(handleError(res));
+}
+
 // Creates a new Artefact in the DB
 export function create(req, res) {
     return Artefact.create(req.body)
