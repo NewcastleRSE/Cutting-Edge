@@ -18,6 +18,7 @@ import {
 import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
 import artefact from './artefact/artefact.component';
+import casestudies from './case_studies/casestudies.component';
 import search from './search/search.component';
 import home from './home/home.component';
 import timeline from './timeline/timeline.component';
@@ -27,7 +28,7 @@ import util from '../components/util/util.module';
 import './app.scss';
 
 angular.module('cuttingEdgeDockerApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBootstrap,
-    navbar, footer, artefact, home, search, timeline, constants, util
+    navbar, footer, artefact, home, casestudies, search, timeline, constants, util
 ])
     .config(routeConfig);
 

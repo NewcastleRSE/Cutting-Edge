@@ -4,8 +4,7 @@ import routing from './timeline.routes';
 
 export class TimelineController {
 
-    awesomeThings = [];
-    newThing = '';
+    artefacts = [];
 
     /*@ngInject*/
     constructor($http) {
