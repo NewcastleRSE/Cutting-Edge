@@ -66,8 +66,9 @@ function handleError(res, statusCode) {
 
 // Gets a list of Artefacts
 export function index(req, res) {
-    var query = {};
-
+    let query = {};
+    let limit = 100;
+    
     // location based query
     if(req.query.longitude && req.query.latitude && req.query.radius) {
         if(validator.isFloat(req.query.longitude) && validator.isFloat(req.query.latitude) && validator.isInt(req.query.radius)) {
@@ -129,17 +130,19 @@ export function index(req, res) {
         ];
     }
     // return 100 by default
-    var limit = 100;
+    if(req.query.all) {
+        limit = Number.MAX_SAFE_INTEGER;
+    }
 
     if(req.query.count) {
         if(validator.isInt(req.query.count)) {
             // no more than 1000 at a time
-            limit = parseInt(req.query.count) >= 1000 ? 1000 : parseInt(req.query.count);
+            limit = parseInt(req.query.count, 10) >= 1000 ? 1000 : parseInt(req.query.count, 10);
         }
     }
 
     // start on first page by default
-    var skip = 0;
+    let skip = 0;
 
     if(req.query.page) {
         if(validator.isInt(req.query.page) && req.query.page > 1) {

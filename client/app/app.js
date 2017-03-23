@@ -5,10 +5,9 @@ import angular from 'angular';
 import ngCookies from 'angular-cookies';
 import ngResource from 'angular-resource';
 import ngSanitize from 'angular-sanitize';
-
 import uiRouter from 'angular-ui-router';
 import uiBootstrap from 'angular-ui-bootstrap';
-// import ngMessages from 'angular-messages';
+import source from 'ui.leaflet.webpack';
 
 
 import {
@@ -17,18 +16,22 @@ import {
 
 import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
+import Modal from '../components/modal/modal.service';
 import artefact from './artefact/artefact.component';
 import casestudies from './casestudies/casestudies.component';
 import search from './search/search.component';
 import home from './home/home.component';
-import timeline from './timeline/timeline.component';
+import periods from './periods/periods.component';
+import map from './map/map.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
+import timeline from '../directives/timeline/timeline.directive';
+
 
 import './app.scss';
 
 angular.module('cuttingEdgeDockerApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBootstrap,
-    navbar, footer, artefact, home, casestudies, search, timeline, constants, util
+    navbar, footer, artefact, home, casestudies, search, periods, constants, util, timeline, map, Modal, 'ui-leaflet'
 ])
     .config(routeConfig);
 
