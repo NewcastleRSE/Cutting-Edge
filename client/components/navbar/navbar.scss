@@ -1,0 +1,16 @@
+.navbar {
+  background-color: $backgroundColor;
+  border: none;
+
+  .navbar-nav {
+    margin-right: 25px;
+
+    .active {
+      a, a:hover, a:active, a:focus {
+        background-color: $accentColor;
+        color: white;
+      }
+    }
+  }
+}
+

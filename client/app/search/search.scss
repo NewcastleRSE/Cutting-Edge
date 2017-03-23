@@ -1,0 +1,43 @@
+.search-menu {
+  margin-top: -50px;
+  padding: 50px 15px 40px 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: fixed;
+  z-index: 1050;
+
+  .input-group .form-control:first-child {
+    border-radius: 0;
+  }
+
+  .input-group-btn:last-child > .btn{
+    border-radius: 0;
+    background-color: $accentColor;
+    color: white;
+  }
+}
+
+.search-results {
+
+  margin-top: 50px;
+
+  .artefact-thumbnail {
+    background-color: white;
+    margin-bottom: 15px;
+    padding: 10px;
+    min-height: 220px;
+
+    img {
+      width: 100%;
+    }
+
+    h4 {
+      margin: 0;
+      line-height: 30px;
+    }
+
+    h6 {
+      margin: 0;
+      line-height: 20px;
+    }
+  }
+}

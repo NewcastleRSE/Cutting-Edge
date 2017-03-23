@@ -11,6 +11,9 @@ export class SearchController {
     categories = [];
     materials = [];
     periods = [];
+    selectedCategories = {};
+    selectedMaterials = {};
+    selectedPeriods = {};
     hasDescription = false;
     hasReferences = false;
 
@@ -32,14 +35,35 @@ export class SearchController {
 
     search = function(){
 
+        let selectedCategories = this.selectedCategories;
+        let selectedMaterials = this.selectedMaterials;
+        let selectedPeriods = this.selectedPeriods;
+
         let queryString = '';
 
         queryString += this.keyword ? 'text=' + this.keyword + '&' : '';
         queryString += this.page ? 'page=' + this.page + '&' : '';
         queryString += this.pageSize ? 'count=' + this.pageSize + '&' : '';
-        queryString += this.categories.length ? 'category=' + this.categories + '&' : '';
-        queryString += this.materials.length ? 'material=' + this.materials + '&' : '';
-        queryString += this.periods.length ? 'period=' + this.periods + '&' : '';
+
+        Object.keys(selectedCategories).forEach(function(categoryId){
+            if(selectedCategories[categoryId]){
+                queryString += 'category=' + categoryId + '&';
+            }
+        });
+
+        Object.keys(selectedMaterials).forEach(function(materialId){
+            if(selectedMaterials[materialId]) {
+                queryString += 'material=' + materialId + '&';
+            }
+        });
+
+        Object.keys(selectedPeriods).forEach(function(periodId){
+            if(selectedPeriods[periodId]){
+                queryString += 'period=' + periodId + '&';
+            }
+
+        });
+
         queryString += this.hasDescription ? 'hasDescription=' + this.hasDescription + '&' : '';
         queryString += this.hasReferences ? 'hasReferences=' + this.hasReferences + '&' : '';
 
@@ -56,6 +80,21 @@ export class SearchController {
 
     $onInit() {
         this.search();
+
+        this.$http.get('/api/categories')
+            .then(response => {
+                this.categories = response.data;
+            });
+
+        this.$http.get('/api/materials')
+            .then(response => {
+                this.materials = response.data;
+            });
+
+        this.$http.get('/api/periods')
+            .then(response => {
+                this.periods = response.data;
+            });
     }
 }
 

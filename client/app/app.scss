@@ -16,6 +16,9 @@ $fa-font-path: '/assets/fonts/font-awesome/';
   padding: 0.2em 0;
 }
 
+$accentColor: #85BDBF;
+$backgroundColor: #f8f8f8;
+
 // Component styles are injected through gulp
 /* inject:scss */
 @import 'about/about';
@@ -27,4 +30,14 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 @import 'map/map';
 @import '../components/footer/footer';
 @import '../components/modal/modal';
+@import '../components/navbar/navbar';
 /* endinject */
+
+body, html, div.ng-scope {
+  height: 100%;
+  background-color: $backgroundColor;
+}
+
+body {
+  padding-top: 50px;
+}

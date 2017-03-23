@@ -22,7 +22,7 @@ export class NavbarComponent {
     },
     {
         title: 'Timeline',
-        state: 'timeline'
+        state: 'periods'
     },
     ];
     isCollapsed = true;

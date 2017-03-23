@@ -1,0 +1,43 @@
+home {
+  height: 100%;
+  width: 100%;
+  display: block;
+  background-size: contain;
+  background-image: url('../assets/images/home.jpg');
+  background-repeat: no-repeat;
+  margin-top: -50px;
+
+  .home-menu {
+
+    padding: 75px 40px 25px 25px;
+    background-color: rgba(255,255,255,0.8);
+    z-index: 1050;
+    position: fixed;
+
+    h1 {
+      margin: 0 0 50px;
+    }
+
+    ul {
+
+      margin: 0;
+
+      li {
+
+        a {
+          color: #464646;
+          transition: color linear 0.15s;
+
+          &:hover, &:active {
+            text-decoration: none;
+            color: $accentColor
+          }
+
+          p {
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+}

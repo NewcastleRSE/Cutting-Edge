@@ -56,7 +56,7 @@ export class MapController {
             artefact: {
                 type: 'div',
                 iconSize: [10, 10],
-                className: 'blue',
+                className: 'red',
                 iconAnchor:  [5, 5]
             },
             megalithic: {
@@ -68,7 +68,7 @@ export class MapController {
             domesday: {
                 type: 'div',
                 iconSize: [10, 10],
-                className: 'green',
+                className: 'red',
                 iconAnchor:  [5, 5]
             }
         };
@@ -117,6 +117,8 @@ export class MapController {
                         content: artefact
                     }
                 });
+
+                console.log(markers);
             });
 
         this.$http.get('/api/megalithic?latitude=' + this.center.lat + '&longitude=' + this.center.lng + '&radius=100000')

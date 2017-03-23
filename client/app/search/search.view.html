@@ -1,42 +1,52 @@
-<section>
-    <div class="row">
-        <section class="col-md-4 col-md-offset-4 search-form">
-            <form class="form-horizontal" role="form" data-ng-submit="$ctrl.search()">
-                <div class="input-group">
-                    <!--<span class="input-group-btn">
-                        <button class="btn btn-default btn-lg" data-toggle="modal" data-target="#search-help"><span class="glyphicon glyphicon-question-sign"></span></button>
-                    </span>-->
-                    <input type="text" class="form-control input-lg" placeholder="Search" data-ng-model="$ctrl.keyword">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default btn-lg" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+<div class="row">
+    <div class="search-menu col-lg-3 col-md-4 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+        <form class="form-horizontal" role="form" data-ng-submit="$ctrl.search()">
+            <div class="input-group">
+                <!--<span class="input-group-btn">
+                    <button class="btn btn-default btn-lg" data-toggle="modal" data-target="#search-help"><span class="glyphicon glyphicon-question-sign"></span></button>
+                </span>-->
+                <input type="text" class="form-control" placeholder="Search" data-ng-model="$ctrl.keyword">
+                <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                     </span>
+            </div>
+        </form>
+        <section class="search-filters">
+            <uib-accordion close-others="true">
+                <div uib-accordion-group class="panel-default" heading="Categories">
+                    <ul class="categories list-unstyled">
+                        <li data-ng-repeat="category in $ctrl.categories track by category.id">
+                            <label>
+                                <input type="checkbox" name="category-{{category.id}}" value="{{category.id}}" data-ng-model="$ctrl.selectedCategories[category.id]"/> {{category.name}}
+                            </label>
+                        </li>
+                    </ul>
                 </div>
-            </form>
-        </section>
-    </div>
-    <div class="row">
-        <section class="col-md-2 col-md-offset-2 search-filters">
+                <div uib-accordion-group class="panel-default" heading="Materials">
+                    <ul class="materials list-unstyled">
+                        <li data-ng-repeat="material in $ctrl.materials track by material.id">
+                            <label>
+                                <input type="checkbox" name="material-{{material.id}}" value="{{material.id}}" data-ng-model="$ctrl.selectedMaterials[material.id]"/> {{material.name}}
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div uib-accordion-group class="panel-default" heading="Periods">
+                    <ul class="categories list-unstyled">
+                        <li data-ng-repeat="period in $ctrl.periods track by period.id">
+                            <label>
+                                <input type="checkbox" name="period-{{period.id}}" value="{{period.id}}" data-ng-model="$ctrl.selectedPeriods[period.id]"/> {{period.name}}
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </uib-accordion>
             <ul class="list-unstyled">
-                <li>
-                    <a data-ng-click="categories()">
-                        <h4><span class="glyphicon glyphicon-tags"></span>Categories</h4>
-                    </a>
-                </li>
-                <li>
-                    <a data-ng-click="materials()">
-                        <h4><span class="glyphicon glyphicon-th"></span>Materials</h4>
-                    </a>
-                </li>
-                <li>
-                    <a data-ng-click="periods()">
-                        <h4><span class="glyphicon glyphicon-bookmark"></span>Periods</h4>
-                    </a>
-                </li>
-                <li>
+               <li>
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" value="hasDescription" data-ng-model="$ctrl.hasDescription">
-                            Must Have Description
+                            Has Description
                         </label>
                     </div>
                 </li>
@@ -44,33 +54,32 @@
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" value="hasReference" data-ng-model="$ctrl.hasReferences">
-                            Must Have References
+                            Has References
                         </label>
                     </div>
                 </li>
             </ul>
-            <ul class="selected-categories">
-                <li data-ng-repeat="category in global.selectedCategories">
-                    {{category}}
-                </li>
-            </ul>
         </section>
-        <section class="col-md-6 search-results">
-            <div class="artefact-list">
-                <div class="artefact-thumbnail clearfix" data-ng-repeat="artefact in $ctrl.artefacts">
+    </div>
+    <div class="search-results col-lg-7 col-md-6 col-sm-6 col-xs-12 col-lg-offset-4 col-md-offset-5 col-sm-offset-7">
+        <div class="artefact-list">
+            <div class="col-lg-4 col-md-6 col-sm-12" data-ng-repeat="artefact in $ctrl.artefacts">
+                <div class="artefact-thumbnail">
                     <a href="/#!/artefact/{{artefact.id}}">
                         <img data-ng-show="artefact.thumbnail" src="{{artefact.thumbnail}}" alt="{{artefact.simpleName}}">
                         <div data-ng-hide="artefact.thumbnail" class="no-image">No Image</div>
-                        <h3>{{artefact.simpleName}}</h3>
-                        <h5>{{artefact.findLocation.subtitle}}</h5>
+                        <h4>{{artefact.simpleName}}</h4>
+                        <h6>{{artefact.findLocation.title}}</h6>
                     </a>
                 </div>
             </div>
-            <div data-ng-click="$ctrl.nextPage()" class="fetch-more btn btn-default">Load More Results</div>
-            <h1 data-ng-hide="!artefacts || artefacts.length">No artefacts yet.</h1>
-        </section>
+        </div>
     </div>
-</section>
+    <div class="pagination col-lg-7 col-md-6 col-sm-6 col-xs-12">
+        <div data-ng-click="$ctrl.nextPage()" class="fetch-more btn btn-default">Load More Results</div>
+        <h1 data-ng-hide="!artefacts || artefacts.length">No artefacts yet.</h1>
+    </div>
+</div>
 <script type="text/ng-template" id="categories.html">
     <div class="modal-header">
         <h3>Categories</h3>
