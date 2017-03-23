@@ -76,10 +76,10 @@ export function index(req, res) {
                 $near: {
                     $geometry: {
                         type: 'Point',
-                        coordinates: [req.query.longitude, req.query.latitude]
-                    }
-                },
-                $maxDistance: req.query.radius
+                        coordinates: [parseFloat(req.query.longitude), parseFloat(req.query.latitude)]
+                    },
+                    $maxDistance: parseInt(req.query.radius)
+                }
             };
         }
     }
@@ -149,6 +149,8 @@ export function index(req, res) {
             skip = (req.query.page - 1) * limit;
         }
     }
+
+    console.log(query);
 
     return Artefact.find(query)
         .limit(limit)

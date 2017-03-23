@@ -9,7 +9,11 @@ var MegalithicSchema = new mongoose.Schema({
     source: String,
     type: String,
     location: {
-        type: { type: String },
+        type: {
+            type: String,
+            enum: 'Point',
+            default: 'Point'
+        },
         coordinates: [Number]
     },
     siteCondition: Number,
@@ -18,6 +22,8 @@ var MegalithicSchema = new mongoose.Schema({
     image: String,
     region: String
 });
+
+MegalithicSchema.index({location: '2dsphere'});
 
 registerEvents(MegalithicSchema);
 export default mongoose.model('Megalithic', MegalithicSchema);

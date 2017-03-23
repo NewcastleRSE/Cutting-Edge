@@ -75,10 +75,10 @@ export function index(req, res) {
                 $near: {
                     $geometry: {
                         type: 'Point',
-                        coordinates: [req.query.longitude, req.query.latitude]
-                    }
-                },
-                $maxDistance: req.query.radius
+                        coordinates: [parseFloat(req.query.longitude), parseFloat(req.query.latitude)]
+                    },
+                    $maxDistance: parseInt(req.query.radius)
+                }
             };
         }
     }

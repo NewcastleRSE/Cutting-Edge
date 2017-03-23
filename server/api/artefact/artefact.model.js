@@ -8,17 +8,21 @@ var Category = {
     name: String
 };
 
-var Location = {
+var LocationSchema = new mongoose.Schema({
     id: Number,
     type: { type: String },
     title: String,
     subtitle: String,
     location: {
-        type: { type: String },
+        type: {
+            type: String,
+            enum: 'Point',
+            default: 'Point'
+        },
         coordinates: [Number]
     },
     accuracy: Number
-};
+});
 
 var PeriodSchema = new mongoose.Schema({
     id: Number,
@@ -53,12 +57,14 @@ var ArtefactSchema = new mongoose.Schema({
     findLocationId: Number,
     storeLocationId: Number,
     category: Category,
-    findLocation: Location,
-    currentLocation: Location,
+    findLocation: LocationSchema,
+    currentLocation: LocationSchema,
     periods: [PeriodSchema],
     materials: [MaterialSchema],
     references: [ReferenceSchema]
 });
+
+LocationSchema.index({location: '2dsphere'});
 
 registerEvents(ArtefactSchema);
 export default mongoose.model('Artefact', ArtefactSchema);

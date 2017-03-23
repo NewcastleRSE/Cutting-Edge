@@ -32,6 +32,7 @@ export class MapController {
 
     $onInit() {
 
+        let markers = this.markers;
         let $uibModal = this.$uibModal;
         let $rootScope = this.$rootScope;
         let marker = {};
@@ -52,16 +53,22 @@ export class MapController {
         }
 
         let icons = {
-            blue: {
+            artefact: {
                 type: 'div',
                 iconSize: [10, 10],
                 className: 'blue',
                 iconAnchor:  [5, 5]
             },
-            red: {
+            megalithic: {
                 type: 'div',
                 iconSize: [10, 10],
                 className: 'red',
+                iconAnchor:  [5, 5]
+            },
+            domesday: {
+                type: 'div',
+                iconSize: [10, 10],
+                className: 'green',
                 iconAnchor:  [5, 5]
             }
         };
@@ -70,53 +77,26 @@ export class MapController {
             baselayers: {
                 openStreetMap: {
                     name: 'OpenStreetMap',
-                        type: 'xyz',
-                        url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+                    type: 'xyz',
+                    url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                 }
             },
             overlays: {
-                red: {
-                    type: 'group',
-                        name: 'red',
-                        visible: true
+                artefact: {
+                    type: 'markercluster',
+                    name: 'Artefact',
+                    visible: true
                 },
-
-                blue: {
-                    type: 'group',
-                        name: 'blue',
-                        visible: true
+                megalithic: {
+                    type: 'markercluster',
+                    name: 'Megalithic',
+                    visible: true
+                },
+                domesday: {
+                    type: 'markercluster',
+                    name: 'Domesday',
+                    visible: true
                 }
-            }
-        };
-
-        this.markers = {
-
-            stoke: {
-                layer: 'blue',
-                    lat: 51.5615,
-                    lng: -0.0731,
-                    icon: icons.blue
-            },
-
-            dalston: {
-                layer: 'blue',
-                    lat: 51.545,
-                    lng: -0.070,
-                    icon: icons.blue
-            },
-
-            wandsworth: {
-                layer: 'red',
-                    lat: 51.4644,
-                    lng:-0.1924,
-                    icon: icons.red
-            },
-
-            battersea: {
-                layer: 'red',
-                    lat: 51.4638,
-                    lng: -0.1677,
-                    icon: icons.red
             }
         };
 
@@ -126,9 +106,48 @@ export class MapController {
             zoom: 11
         };
 
-        this.$http.get('/api/artefacts?all=true')
+        this.$http.get('/api/artefacts?latitude=' + this.center.lat + '&longitude=' + this.center.lng + '&radius=100000')
             .then(response => {
-                this.caseStudies = response.data;
+                angular.forEach(response.data, function(artefact){
+                    markers['artefact_' + artefact.id] = {
+                        layer: 'artefact',
+                        lat: artefact.findLocation.location.coordinates[1],
+                        lng: artefact.findLocation.location.coordinates[0],
+                        icon: icons.artefact,
+                        content: artefact
+                    }
+                });
+            });
+
+        this.$http.get('/api/megalithic?latitude=' + this.center.lat + '&longitude=' + this.center.lng + '&radius=100000')
+            .then(response => {
+                angular.forEach(response.data, function(megalithic){
+                    markers['megalithic_' + megalithic.id] = {
+                        layer: 'megalithic',
+                        lat: parseFloat(megalithic.location.coordinates[1]),
+                        lng: parseFloat(megalithic.location.coordinates[0]),
+                        icon: icons.megalithic,
+                        content: megalithic
+                    }
+                });
+            });
+
+        //http://opendomesday.org/api/1.0/placesnear/?lat=52.5&lng=1.0&radius=10
+        this.$http.get('http://opendomesday.org/api/1.0/placesnear/?lat=52.5&lng=1.0&radius=25')
+            .then(response => {
+                angular.forEach(response.data, function(domesday){
+
+                    var place = (village.location.substr(7));
+                    var placeArray = (place.substring(0, place.length - 1)).split(' ');
+
+                    markers['domesday_' + domesday.id] = {
+                        layer: 'domesday',
+                        lat: parseFloat(placeArray[1]),
+                        lng: parseFloat(placeArray[0]),
+                        icon: icons.domesday,
+                        content: domesday
+                    }
+                });
             });
 
         this.$scope.$on('leafletDirectiveMarker.click', function(event, args){
