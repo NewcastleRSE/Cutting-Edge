@@ -1,0 +1,61 @@
+periods {
+  display: block;
+  margin: 0 -15px;
+
+  .tl-timeline {
+    background-color: $backgroundColor !important;
+
+    .tl-slider-container-mask {
+      background-color: $backgroundColor !important;
+    }
+
+    .tl-slide {
+      background-color: $backgroundColor !important;
+
+      .tl-slide-scrollable-container {
+        width: 100% !important;
+
+        .tl-slide-content-container {
+          width: 100% !important;
+
+          .tl-slide-content {
+            width: 100% !important;
+
+            .tl-text {
+              max-width: 100%;
+              width: 100%;
+
+              .artefact-thumbnail {
+                background-color: white;
+                margin-bottom: 15px;
+                padding: 10px;
+                min-height: 150px;
+
+                img {
+                  width: 100%;
+                }
+
+                h4 {
+                  margin: 0;
+                  line-height: 30px;
+                  font-size: 16px;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                }
+
+                h6 {
+                  margin: 0;
+                  line-height: 20px;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

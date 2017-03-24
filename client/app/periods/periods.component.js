@@ -4,19 +4,13 @@ import routing from './periods.routes';
 
 export class PeriodsController {
 
-    awesomeThings = [];
-    newThing = '';
-
     /*@ngInject*/
-    constructor($http) {
-        this.$http = $http;
+    constructor() {
+
     }
 
     $onInit() {
-        this.$http.get('/api/artefacts?hasCaseStudy=true')
-            .then(response => {
-                this.caseStudies = response.data;
-            });
+
     }
 }
 

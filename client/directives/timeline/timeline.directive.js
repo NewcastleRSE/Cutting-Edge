@@ -63,20 +63,27 @@ export default angular.module('cuttingEdgeDockerApp.timeline', [])
 
                                         timelineData.eras.push(era);
 
-                                        let html = '<div class="artefact-list">';
+                                        let html = '<div class="container-fluid artefact-list"><div class="row">';
 
                                         angular.forEach(artefacts[period.id], function(artefact){
 
                                                 console.log(artefact);
 
-                                                html += '<div class="artefact">';
-                                                html += '<a class="clearfix" href="/#!/artefact/' + artefact.id + '/">';
-                                                html += '<img src="' + artefact.thumbnail + '" alt="' + artefact.simpleName + '" />';
-                                                html += '<h5>' + artefact.simpleName + '</h5>';
+                                                html += '<div class="col-lg-2 col-md-3 col-sm-4"><div class="artefact-thumbnail">';
+                                                html += '<a href="/#!/artefact/' + artefact.id + '/">';
+
+                                                if(artefact.thumbnail){
+                                                    html += '<img src="' + artefact.thumbnail + '" alt="' + artefact.simpleName + '" />';
+                                                }
+                                                else {
+                                                    html += '<img src="/assets/images/no-image.jpg" alt="' + artefact.simpleName + '" />';
+                                                }
+
+                                                html += '<h4>' + artefact.simpleName + '</h4>';
                                                 html += '<h6>' + artefact.findLocation.title + '</h6>';
-                                                html += '</a></div>';
+                                                html += '</a></div></div>';
                                         });
-                                            html += '</div>';
+                                            html += '</div></div>';
 
                                         let date = {
                                             start_date: {

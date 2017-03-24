@@ -1,12 +1,13 @@
-<section>
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2 case-study-list">
-            <div class="col-md-3 col-md-offset-1 case-study" data-ng-repeat="caseStudy in $ctrl.caseStudies">
-                <a ui-sref="artefact({artefactId:caseStudy._id})">
-                    <img src="{{caseStudy.thumbnail}}" alt="{{caseStudy.simpleName}}" />
-                    <h4><strong>{{caseStudy.simpleName}}</strong> {{caseStudy.findLocation.title}}</h4>
+<div class="row case-study-list">
+    <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1">
+        <div data-ng-repeat="caseStudy in $ctrl.caseStudies" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="case-study">
+                <a href="/#!/artefact/{{caseStudy.id}}">
+                    <img src="{{caseStudy.thumbnail}}" alt="{{caseStudy.simpleName}}">
+                    <h4>{{caseStudy.simpleName}}</h4>
+                    <h6>{{caseStudy.findLocation.title}}</h6>
                 </a>
             </div>
         </div>
     </div>
-</section>
+</div>

@@ -1,0 +1,25 @@
+.case-study-list {
+  margin-top: 50px;
+
+  .case-study {
+    background-color: white;
+    margin-bottom: 15px;
+    padding: 10px;
+    min-height: 220px;
+
+    img {
+      width: 100%;
+    }
+
+    h4 {
+      margin: 0;
+      line-height: 30px;
+    }
+
+    h6 {
+      margin: 0;
+      line-height: 20px;
+      font-weight: 600;
+    }
+  }
+}
