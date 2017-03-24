@@ -150,8 +150,6 @@ export function index(req, res) {
         }
     }
 
-    console.log(query);
-
     return Artefact.find(query)
         .limit(limit)
         .skip(skip)

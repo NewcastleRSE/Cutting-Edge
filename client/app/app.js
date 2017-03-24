@@ -8,7 +8,7 @@ import ngSanitize from 'angular-sanitize';
 import uiRouter from 'angular-ui-router';
 import uiBootstrap from 'angular-ui-bootstrap';
 import source from 'ui.leaflet.webpack';
-
+import ngInfiniteScroll from 'ng-infinite-scroll';
 
 import {
     routeConfig
@@ -30,7 +30,7 @@ import timeline from '../directives/timeline/timeline.directive';
 
 import './app.scss';
 
-angular.module('cuttingEdgeDockerApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBootstrap,
+angular.module('cuttingEdgeDockerApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBootstrap, ngInfiniteScroll,
     navbar, footer, artefact, home, casestudies, search, periods, constants, util, timeline, map, Modal, 'ui-leaflet'
 ])
     .config(routeConfig);

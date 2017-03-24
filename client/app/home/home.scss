@@ -3,6 +3,7 @@ home {
   width: 100%;
   display: block;
   background-size: contain;
+  background-position: center;
   background-image: url('../assets/images/home.jpg');
   background-repeat: no-repeat;
   margin-top: -50px;
@@ -16,6 +17,7 @@ home {
 
     h1 {
       margin: 0 0 50px;
+      color: $accentColor;
     }
 
     ul {
@@ -31,6 +33,10 @@ home {
           &:hover, &:active {
             text-decoration: none;
             color: $accentColor
+          }
+
+          h2 {
+            margin-bottom: 0;
           }
 
           p {

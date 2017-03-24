@@ -7,7 +7,7 @@ export class SearchController {
     artefacts = [];
     keyword = '';
     page = 1;
-    pageSize = 50;
+    pageSize = 20;
     categories = [];
     materials = [];
     periods = [];
@@ -18,8 +18,10 @@ export class SearchController {
     hasReferences = false;
 
     nextPage = function(){
-        this.page++;
-        this.search();
+        if(this.page < 52){
+            this.page++;
+            this.search(true)
+        }
     };
 
     filterDescription = function(include){
@@ -33,13 +35,15 @@ export class SearchController {
         this.search();
     };
 
-    search = function(){
+    search = function(page=false){
 
         let selectedCategories = this.selectedCategories;
         let selectedMaterials = this.selectedMaterials;
         let selectedPeriods = this.selectedPeriods;
 
         let queryString = '';
+
+        this.page = page ? this.page : 1;
 
         queryString += this.keyword ? 'text=' + this.keyword + '&' : '';
         queryString += this.page ? 'page=' + this.page + '&' : '';
@@ -69,7 +73,12 @@ export class SearchController {
 
         this.$http.get('/api/artefacts?' + queryString)
             .then(response => {
-                this.artefacts = response.data;
+                if(page){
+                    this.artefacts = this.artefacts.concat(response.data);
+                }
+                else {
+                    this.artefacts = response.data;
+                }
             });
     };
 
