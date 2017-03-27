@@ -1,0 +1,39 @@
+.artefact-menu {
+  dd {
+    margin-bottom: 10px;
+
+    ul {
+      margin: 0;
+    }
+  }
+
+  .references {
+    li {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.images {
+  margin-top: 50px;
+  background-color: white;
+  padding: 10px 10px 60px 10px;
+
+  .carousel-control {
+    background-image: none;
+  }
+
+  .carousel-indicators {
+    bottom: -50px;
+
+    li {
+      border-color: $accentColor;
+
+      &.active {
+        background-color: $accentColor
+      }
+    }
+  }
+}
+
+

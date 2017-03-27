@@ -136,3 +136,44 @@ h1,h2,h3,h4,h5,h6 {
 .checkbox.checkbox-inline {
   margin-top: 0;
 }
+
+.sidebar-menu {
+  margin-top: -50px;
+  padding: 50px 15px 40px 15px;
+  background-color: rgba(255, 255, 255, 1);
+  position: fixed;
+  z-index: 1050;
+
+  .accordion {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+
+    .panel-heading {
+      background-color: white;
+      padding: 0;
+      border-bottom: 2px solid white;
+
+      .panel-title a {
+        display: block;
+        padding: 10px 15px 10px 0;
+
+        &:hover, &:active, &:focus {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .panel-body {
+      border: none;
+      background-color: white;
+      padding: 10px 0;
+    }
+
+    &.panel-open {
+      .panel-heading {
+        border-bottom: 2px solid $accentColor;
+      }
+    }
+  }
+}

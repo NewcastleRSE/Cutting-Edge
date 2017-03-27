@@ -74,7 +74,7 @@
         <div class="artefact-list" infinite-scroll="$ctrl.nextPage()" infinite-scroll-distance="1" infinite-scroll-listen-for-event="list:filtered">
             <div class="col-lg-4 col-md-6 col-sm-12" data-ng-repeat="artefact in $ctrl.artefacts">
                 <div class="artefact-thumbnail">
-                    <a href="/#!/artefact/{{artefact.id}}">
+                    <a href="/#!/artefact/{{artefact._id}}">
                         <img data-ng-show="artefact.thumbnail" src="{{artefact.thumbnail}}" alt="{{artefact.simpleName}}">
                         <img data-ng-hide="artefact.thumbnail" src="/assets/images/no-image.jpg" alt="{{artefact.simpleName}}">
                         <h4>{{artefact.simpleName}}</h4>
