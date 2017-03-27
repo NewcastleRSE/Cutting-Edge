@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="sidebar-menu artefact-menu col-lg-2 col-md-3 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+    <div class="sidebar-menu artefact-menu col-lg-2 col-md-3 col-sm-4 col-xs-12 col-lg-offset-1 col-md-offset-1">
         <h1>{{$ctrl.artefact.simpleName}}</h1>
         <h4>{{$ctrl.artefact.category.name}}</h4>
         <small>{{$ctrl.artefact.accession}}</small>
@@ -42,7 +42,7 @@
             <!--</uib-accordion>-->
         <!--</section>-->
     </div>
-    <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-7 col-xs-12">
+    <div class="col-lg-8 col-md-7 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4 col-xs-12">
         <div class="images">
             <div uib-carousel active="0" no-wrap="true">
                 <div uib-slide ng-repeat="image in $ctrl.artefact.images track by image.id" index="$index">

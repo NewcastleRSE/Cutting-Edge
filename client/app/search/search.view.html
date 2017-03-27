@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="search-menu col-lg-2 col-md-3 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+    <div class="sidebar-menu search-menu col-lg-2 col-md-3 col-sm-4 col-xs-12 col-lg-offset-1 col-md-offset-1">
         <form class="form-horizontal" role="form" data-ng-submit="$ctrl.search()">
             <div class="input-group">
                 <!--<span class="input-group-btn">
@@ -70,9 +70,9 @@
             </ul>
         </section>
     </div>
-    <div class="search-results col-lg-8 col-md-7 col-sm-6 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-7">
+    <div class="search-results col-lg-8 col-md-7 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4">
         <div class="artefact-list">
-            <div class="col-lg-4 col-md-6 col-sm-12" data-ng-repeat="artefact in $ctrl.artefacts">
+            <div class="col-lg-4 col-md-6 col-sm-6" data-ng-repeat="artefact in $ctrl.artefacts">
                 <div class="artefact-thumbnail">
                     <a href="/#!/artefact/{{artefact._id}}">
                         <img data-ng-show="artefact.thumbnail" src="{{artefact.thumbnail}}" alt="{{artefact.simpleName}}">

@@ -138,11 +138,9 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .sidebar-menu {
-  margin-top: -50px;
+
   padding: 50px 15px 40px 15px;
   background-color: rgba(255, 255, 255, 1);
-  position: fixed;
-  z-index: 1050;
 
   .accordion {
     border-radius: 0;
@@ -177,3 +175,20 @@ h1,h2,h3,h4,h5,h6 {
     }
   }
 }
+
+@media (min-width: 768px) {
+  .sidebar-menu {
+    position: fixed;
+    z-index: 1050;
+    margin: -50px 10px 0 10px;
+  }
+}
+
+@media (min-width: 992px) {
+  .sidebar-menu {
+    margin-top: -50px;
+    margin-left: 8.3333333333%;
+  }
+}
+
+
