@@ -17,7 +17,7 @@
                     <ul class="categories list-unstyled">
                         <li data-ng-repeat="category in $ctrl.categories track by category.id">
                             <div class="checkbox">
-                                <input type="checkbox" name="category-{{category.id}}" value="{{category.id}}" data-ng-model="$ctrl.selectedCategories[category.id]"/>
+                                <input type="checkbox" ng-click="$ctrl.search()" name="category-{{category.id}}" value="{{category.id}}" data-ng-model="$ctrl.selectedCategories[category.id]"/>
                                 <label>
                                     {{category.name}}
                                 </label>
@@ -29,7 +29,7 @@
                     <ul class="materials list-unstyled">
                         <li data-ng-repeat="material in $ctrl.materials track by material.id">
                             <div class="checkbox">
-                                <input type="checkbox" name="material-{{material.id}}" value="{{material.id}}" data-ng-model="$ctrl.selectedMaterials[material.id]"/>
+                                <input type="checkbox" ng-click="$ctrl.search()" name="material-{{material.id}}" value="{{material.id}}" data-ng-model="$ctrl.selectedMaterials[material.id]"/>
                                 <label>
                                     {{material.name}}
                                 </label>
@@ -41,7 +41,7 @@
                     <ul class="categories list-unstyled">
                         <li data-ng-repeat="period in $ctrl.periods track by period.id">
                             <div class="checkbox">
-                                <input type="checkbox" name="period-{{period.id}}" value="{{period.id}}" data-ng-model="$ctrl.selectedPeriods[period.id]"/>
+                                <input type="checkbox" ng-click="$ctrl.search()" name="period-{{period.id}}" value="{{period.id}}" data-ng-model="$ctrl.selectedPeriods[period.id]"/>
                                 <label>
                                     {{period.name}}
                                 </label>
@@ -53,7 +53,7 @@
             <ul class="list-unstyled">
                <li>
                     <div class="checkbox">
-                        <input type="checkbox" value="hasDescription" data-ng-model="$ctrl.hasDescription">
+                        <input type="checkbox" ng-click="$ctrl.search()" value="hasDescription" data-ng-model="$ctrl.hasDescription">
                         <label>
                             Has Description
                         </label>
@@ -61,7 +61,7 @@
                 </li>
                 <li>
                     <div class="checkbox">
-                        <input type="checkbox" value="hasReference" data-ng-model="$ctrl.hasReferences">
+                        <input type="checkbox" ng-click="$ctrl.search()" value="hasReference" data-ng-model="$ctrl.hasReferences">
                         <label>
                             Has References
                         </label>
@@ -71,7 +71,7 @@
         </section>
     </div>
     <div class="search-results col-lg-8 col-md-7 col-sm-6 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-7">
-        <div class="artefact-list" infinite-scroll="$ctrl.nextPage()" infinite-scroll-distance="1" infinite-scroll-listen-for-event="list:filtered">
+        <div class="artefact-list">
             <div class="col-lg-4 col-md-6 col-sm-12" data-ng-repeat="artefact in $ctrl.artefacts">
                 <div class="artefact-thumbnail">
                     <a href="/#!/artefact/{{artefact._id}}">

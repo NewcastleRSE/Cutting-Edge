@@ -6,8 +6,6 @@ export class SearchController {
 
     artefacts = [];
     keyword = '';
-    page = 1;
-    pageSize = 20;
     categories = [];
     materials = [];
     periods = [];
@@ -16,13 +14,6 @@ export class SearchController {
     selectedPeriods = {};
     hasDescription = false;
     hasReferences = false;
-
-    nextPage = function(){
-        if(this.page < 52){
-            this.page++;
-            this.search(true)
-        }
-    };
 
     filterDescription = function(include){
         console.log(include);
@@ -35,7 +26,7 @@ export class SearchController {
         this.search();
     };
 
-    search = function(page=false){
+    search = function(){
 
         let selectedCategories = this.selectedCategories;
         let selectedMaterials = this.selectedMaterials;
@@ -43,11 +34,7 @@ export class SearchController {
 
         let queryString = '';
 
-        this.page = page ? this.page : 1;
-
         queryString += this.keyword ? 'text=' + this.keyword + '&' : '';
-        queryString += this.page ? 'page=' + this.page + '&' : '';
-        queryString += this.pageSize ? 'count=' + this.pageSize + '&' : '';
 
         Object.keys(selectedCategories).forEach(function(categoryId){
             if(selectedCategories[categoryId]){
@@ -71,14 +58,9 @@ export class SearchController {
         queryString += this.hasDescription ? 'hasDescription=' + this.hasDescription + '&' : '';
         queryString += this.hasReferences ? 'hasReferences=' + this.hasReferences + '&' : '';
 
-        this.$http.get('/api/artefacts?' + queryString)
+        this.$http.get('/api/artefacts?all=true&' + queryString)
             .then(response => {
-                if(page){
-                    this.artefacts = this.artefacts.concat(response.data);
-                }
-                else {
-                    this.artefacts = response.data;
-                }
+                this.artefacts = response.data;
             });
     };
 

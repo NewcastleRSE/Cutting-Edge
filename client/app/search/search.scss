@@ -65,19 +65,34 @@
     padding: 10px;
     min-height: 220px;
 
-    img {
-      width: 100%;
+    a {
+      color: $fontColor;
+      display: block;
+
+      &:active, &:focus {
+        color: $fontColor;
+      }
+
+      &:hover {
+        color: $accentColor;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      h4 {
+        margin: 0;
+        line-height: 30px;
+      }
+
+      h6 {
+        margin: 0;
+        line-height: 20px;
+        font-weight: 600;
+      }
     }
 
-    h4 {
-      margin: 0;
-      line-height: 30px;
-    }
 
-    h6 {
-      margin: 0;
-      line-height: 20px;
-      font-weight: 600;
-    }
   }
 }

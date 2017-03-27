@@ -5,6 +5,8 @@
         <small>{{$ctrl.artefact.accession}}</small>
         <hr>
         <dl>
+            <dt ng-if="$ctrl.artefact.description">Description</dt>
+            <dd ng-if="$ctrl.artefact.description">{{$ctrl.artefact.description}}</dd>
             <dt>Origin</dt>
             <dd>{{$ctrl.artefact.findLocation.subtitle}}</dd>
             <dt>Period</dt>
