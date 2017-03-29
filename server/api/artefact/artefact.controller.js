@@ -68,7 +68,6 @@ function handleError(res, statusCode) {
 export function index(req, res) {
     let query = {};
     let limit = 100;
-    
     // location based query
     if(req.query.longitude && req.query.latitude && req.query.radius) {
         if(validator.isFloat(req.query.longitude) && validator.isFloat(req.query.latitude) && validator.isInt(req.query.radius)) {
@@ -78,7 +77,7 @@ export function index(req, res) {
                         type: 'Point',
                         coordinates: [parseFloat(req.query.longitude), parseFloat(req.query.latitude)]
                     },
-                    $maxDistance: parseInt(req.query.radius)
+                    $maxDistance: parseInt(req.query.radius, 10)
                 }
             };
         }

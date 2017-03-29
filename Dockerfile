@@ -1,3 +1,9 @@
-FROM nginx:1
+FROM node:4.6
 
-COPY cutting-edge.conf /etc/nginx/conf
+COPY dist ~/cutting-edge
+
+WORKDIR ~/cutting-edge
+
+RUN NODE_ENV=production npm install
+
+CMD NODE_ENV=production node ./server

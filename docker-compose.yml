@@ -1,14 +1,27 @@
 version: '2'
 
 services:
-  ce_db:
+  cuttingedge_db:
     image: mongo:3
-  ce_app:
-    build: .
-    image: ce/app:latest
-    depends_on:
-      - ce_db
-    links:
-      - ce_db:ce_db
+    volumes:
+      - $PWD/data:/var/lib/db
     ports:
-      - "3000:3000"
+      - "27017:27017"
+  cuttingedge_app:
+    build: .
+    image: cuttingedge/app:latest
+    depends_on:
+      - cuttingedge_db
+    links:
+      - cuttingedge_db:cuttingedge_db
+    ports:
+      - "80:8080"
+    restart: "on-failure"
+#  cuttingedge_proxy:
+#    image: nginx:1
+#    depends_on:
+#      - cuttingedge_app
+#    links:
+#      - cuttingedge_app:cuttingedge_app
+#    ports:
+#      - "80:80"

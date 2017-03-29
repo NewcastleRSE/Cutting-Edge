@@ -77,7 +77,7 @@ export function index(req, res) {
                         type: 'Point',
                         coordinates: [parseFloat(req.query.longitude), parseFloat(req.query.latitude)]
                     },
-                    $maxDistance: parseInt(req.query.radius)
+                    $maxDistance: parseInt(req.query.radius, 10)
                 }
             };
         }

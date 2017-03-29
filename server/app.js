@@ -15,6 +15,7 @@ import seedDatabaseIfNeeded from './config/seed';
 mongoose.connect(config.mongo.uri, config.mongo.options);
 mongoose.connection.on('error', function(err) {
     console.error(`MongoDB connection error: ${err}`);
+    console.error(config.mongo.uri);
     process.exit(-1); // eslint-disable-line no-process-exit
 });
 

@@ -3,28 +3,22 @@ import uiRouter from 'angular-ui-router';
 import routing from './artefact.routes';
 
 function ModalInstanceCtrl($uibModalInstance, artefact) {
-
     this.artefact = artefact;
     this.ok = function () {
         $uibModalInstance.close();
     };
-
-    let $ctrl = this;
 }
 
 ModalInstanceCtrl.$inject = ['$uibModalInstance', 'artefact'];
 
 export class ArtefactController {
-
     artefact = {};
-
     /*@ngInject*/
     constructor($http, $state, $uibModal) {
         this.$http = $http;
         this.$state = $state;
         this.$uibModal = $uibModal;
     }
-
     $onInit() {
 
         let $uibModal = this.$uibModal;
@@ -33,13 +27,11 @@ export class ArtefactController {
 
         function camelize(str) {
             let camelcase = str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function(match, index) {
-                if (+match === 0) return ""; // or if (/\s+/.test(match)) for white spaces
+                if (+match === 0) return ''; // or if (/\s+/.test(match)) for white spaces
                 return index == 0 ? match.toLowerCase() : match.toUpperCase();
             });
-
-            camelcase = camelcase.replace('/','');
-            camelcase = camelcase.replace('-','');
-
+            camelcase = camelcase.replace('/', '');
+            camelcase = camelcase.replace('-', '');
             return camelcase;
         }
 
@@ -94,7 +86,6 @@ export class ArtefactController {
                     this.artefact = artefact;
                 });
         }
-
         this.openModal = function(artefact, modalClass = 'modal-default') {
 
             console.log(artefact);

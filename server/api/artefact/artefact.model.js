@@ -19,7 +19,11 @@ var LocationSchema = new mongoose.Schema({
             enum: 'Point',
             default: 'Point'
         },
-        coordinates: [Number]
+        coordinates: {
+            type: [Number],
+            index: '2dsphere',
+            default: [0,0]
+        }
     },
     accuracy: Number
 });
@@ -63,8 +67,6 @@ var ArtefactSchema = new mongoose.Schema({
     materials: [MaterialSchema],
     references: [ReferenceSchema]
 });
-
-LocationSchema.index({location: '2dsphere'});
 
 registerEvents(ArtefactSchema);
 export default mongoose.model('Artefact', ArtefactSchema);
