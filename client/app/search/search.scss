@@ -63,13 +63,16 @@
     a {
       color: $fontColor;
       display: block;
+      text-decoration: none;
 
       &:active, &:focus {
         color: $fontColor;
+        text-decoration: none;
       }
 
       &:hover {
         color: $accentColor;
+        text-decoration: none;
       }
 
       img {

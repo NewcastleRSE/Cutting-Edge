@@ -7,19 +7,35 @@
     padding: 10px;
     min-height: 220px;
 
-    img {
-      width: 100%;
-    }
+    a {
+      color: $fontColor;
+      display: block;
+      text-decoration: none;
 
-    h4 {
-      margin: 0;
-      line-height: 30px;
-    }
+      &:active, &:focus {
+        color: $fontColor;
+        text-decoration: none;
+      }
 
-    h6 {
-      margin: 0;
-      line-height: 20px;
-      font-weight: 600;
+      &:hover {
+        color: $accentColor;
+        text-decoration: none;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      h4 {
+        margin: 0;
+        line-height: 30px;
+      }
+
+      h6 {
+        margin: 0;
+        line-height: 20px;
+        font-weight: 600;
+      }
     }
   }
 }

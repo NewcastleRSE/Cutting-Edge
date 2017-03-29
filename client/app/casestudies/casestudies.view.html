@@ -3,7 +3,7 @@
         <div data-ng-repeat="caseStudy in $ctrl.caseStudies" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <div class="case-study">
                 <a href="/#!/artefact/{{caseStudy._id}}">
-                    <img src="{{caseStudy.thumbnail}}" alt="{{caseStudy.simpleName}}">
+                    <img src="{{caseStudy.thumbnail.replace('/256/', '/512/')}}" alt="{{caseStudy.simpleName}}">
                     <h4>{{caseStudy.simpleName}}</h4>
                     <h6>{{caseStudy.findLocation.title}}</h6>
                 </a>

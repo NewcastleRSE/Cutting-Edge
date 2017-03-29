@@ -1,0 +1,81 @@
+<div class="case-study-modal">
+    <div class="modal-header">
+        <h1>{{$ctrl.artefact.simpleName}}</h1>
+        <h4>{{$ctrl.artefact.category.name}}</h4>
+        <small>{{$ctrl.artefact.accession}}</small>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <uib-tabset active="active" justified="true">
+            <uib-tab index="0" heading="Description">
+                <div class="row">
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt>Length</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.length}}mm</dd>
+                            <dt>Width</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.width}}mm</dd>
+                            <dt>Thickness</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.thickness}}mm</dd>
+                            <dt>Weight</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.weight}}g</dd>
+                            <dt>Condition</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.condition}}</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{$ctrl.artefact.caseStudy.description}}</p>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab index="2" heading="Use Wear">
+                <div class="row">
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt>Surface</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.surface}}</dd>
+                            <dt>Colour</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.colour}}</dd>
+                            <dt>Casting Seams</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.castingSeams}}</dd>
+                            <dt>Grinding/Polishing</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.grindingPolishing}}</dd>
+                            <dt>Hammering</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.hammering}}</dd>
+                            <dt>Notching/Denting</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.notchingDenting}}</dd>
+                            <dt>Bending</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.bending}}</dd>
+                            <dt>Use Striations</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.useStriations}}</dd>
+                            <dt>Blunting</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.blunting}}</dd>
+                            <dt>Sharpening</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.sharpening}}</dd>
+                            <dt>Chipping/Cracking</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.chippingCracking}}</dd>
+                            <dt>Asymmetry</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.asymmetry}}</dd>
+                            <dt>Other Use Marks</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.otherUseMarks}}</dd>
+                            <dt>Post-Depositional</dt>
+                            <dd>{{$ctrl.artefact.caseStudy.postDepositional}}</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{$ctrl.artefact.caseStudy.wearDescription}}</p>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab index="3" heading="Interpretation">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>{{$ctrl.artefact.caseStudy.interpretation}}</p>
+                    </div>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-click="$ctrl.ok()">Close</button>
+    </div>
+</div>
