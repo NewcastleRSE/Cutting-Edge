@@ -36,6 +36,13 @@ var all = {
         session: 'cutting-edge-docker-secret'
     },
 
+    raven: {
+        url: 'sentry.di-projects.net',
+        publicKey: '008741333a23451aae3436487236f09b',
+        secretKey: 'd9e516d3d9ee43c69b6a3f19e268010f',
+        project: '6'
+    },
+
     // MongoDB connection options
     mongo: {
         options: {

@@ -13,6 +13,10 @@
 import jsonpatch from 'fast-json-patch';
 import validator from 'validator';
 import Artefact from './artefact.model';
+import config from './../../config/environment';
+import raven from 'raven';
+
+raven.config('https://' + config.raven.publicKey + ':' + config.raven.secretKey + '@' + config.raven.url + '/' + config.raven.project).install();
 
 function respondWithResult(res, statusCode) {
     statusCode = statusCode || 200;
@@ -60,6 +64,7 @@ function handleEntityNotFound(res) {
 function handleError(res, statusCode) {
     statusCode = statusCode || 500;
     return function(err) {
+        raven.captureException(err);
         res.status(statusCode).send(err);
     };
 }

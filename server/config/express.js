@@ -18,10 +18,13 @@ import config from './environment';
 import session from 'express-session';
 import connectMongo from 'connect-mongo';
 import mongoose from 'mongoose';
-var MongoStore = connectMongo(session);
+import raven from 'raven';
+let MongoStore = connectMongo(session);
 
 export default function(app) {
-    var env = app.get('env');
+    let env = app.get('env');
+
+    raven.config('https://' + config.raven.publicKey + ':' + config.raven.secretKey + '@' + config.raven.url + '/' + config.raven.project).install();
 
     if(env === 'development' || env === 'test') {
         app.use(express.static(path.join(config.root, '.tmp')));
