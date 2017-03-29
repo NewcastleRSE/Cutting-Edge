@@ -70,7 +70,7 @@ export default angular.module('cuttingEdgeDockerApp.timeline', [])
                                                 console.log(artefact);
 
                                                 html += '<div class="col-lg-2 col-md-3 col-sm-4"><div class="artefact-thumbnail">';
-                                                html += '<a href="/#!/artefact/' + artefact.id + '/">';
+                                                html += '<a href="/#!/artefact/' + artefact._id + '/">';
 
                                                 if(artefact.thumbnail){
                                                     html += '<img src="' + artefact.thumbnail + '" alt="' + artefact.simpleName + '" />';
